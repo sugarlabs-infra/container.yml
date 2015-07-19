@@ -141,5 +141,16 @@ def logs(path):
     call(['docker', 'logs', '--tail=20', '-f', name])
 
 
+@cli.command(help='View container resource usage')
+@click.argument('path', **PATH_ARG)
+def stats(path):
+    path = os.path.abspath(path)
+    name = container_name(path)
+    if not container_running(name):
+        click.secho('Container not running', fg='red')
+        sys.exit(1)
+    call(['docker', 'stats', name])
+
+
 if __name__ == '__main__':
     cli()
