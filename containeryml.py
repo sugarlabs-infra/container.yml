@@ -78,9 +78,9 @@ def start(path, d):
 
         if key == 'cpu':
             # This is actually a fake flag that proxys to --cpu-quota
-            # and is set in percentages instead of 000s
+            # and is set in percentages instead of 0000s
             key = 'cpu-quota'
-            value = int(value) * 100
+            value = int(value) * 1000
         if key == 'env-file':
             with open(value) as f:
                 envs = yaml.load(f)
@@ -120,9 +120,9 @@ def build(path, l):
         for key, value in config.iteritems():
             if key == 'cpu':
                 # This is actually a fake flag that proxys to --cpu-quota
-                # and is set in percentages instead of 000s
+                # and is set in percentages instead of 0000s
                 key = 'cpu-quota'
-                value = int(value) * 100
+                value = int(value) * 1000
 
             if key in ('cpu-quota', 'memory'):
                 options.extend(['--' + key, str(value)])
