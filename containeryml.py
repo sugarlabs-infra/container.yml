@@ -81,6 +81,11 @@ def start(path, d):
             # and is set in percentages instead of 0000s
             key = 'cpu-quota'
             value = int(value) * 1000
+
+        if key == 'memory':
+            # Add a swap limit equal to the memory
+            options.extend(['--memory-swap', str(value)])
+
         if key == 'env-file':
             with open(value) as f:
                 envs = yaml.load(f)
