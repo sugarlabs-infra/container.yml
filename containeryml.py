@@ -95,7 +95,7 @@ def start(path, d):
         options.extend(['--' + key, str(value)])
 
     if d:
-        options.append('-d')
+        options.extend(['-d', '--restart=always')
     else:
         options.append('-it')
 

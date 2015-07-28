@@ -14,6 +14,7 @@ Inspired by [Docker Compose](https://github.com/docker/compose).
   list.
 * The `env-file` reads environment key/value pairs form a yaml file
 * The `cpu` option sets the percentage of cpu a container gets
+* When running in daemon mode, the container automattically restarts on exit
 * All other options are passed directly to docker
 * The `cpu` and `memory` options are also used during container build if the
   `-l` option is used.  However, the build process can be very slow if it
