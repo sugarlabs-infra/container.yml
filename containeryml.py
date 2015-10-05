@@ -116,6 +116,10 @@ def stop(path):
               help='Limit build process to container resources')
 def build(path, l):
     path = os.path.abspath(path)
+    try:
+        path = os.readlink(path)
+    except OSError:
+        pass
     name = container_name(path)
     options = ['docker', 'build', '--tag=' + name]
 
