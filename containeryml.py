@@ -86,12 +86,6 @@ def start(path, d):
             # Add a swap limit equal to the memory
             options.extend(['--memory-swap', str(value)])
 
-        if key == 'env-file':
-            with open(value) as f:
-                envs = yaml.load(f)
-            for k, v in envs.iteritems():
-                options.extend(['-e', k + '=' + v])
-
         options.extend(['--' + key, str(value)])
 
     if d:
